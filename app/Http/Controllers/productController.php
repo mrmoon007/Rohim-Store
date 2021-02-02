@@ -29,7 +29,7 @@ class productController extends Controller
     }
 
     public function index(){
-        $data=products::all();
+        $data=products::paginate(5);;
         return view('all',compact('data'));
     }
 
@@ -71,20 +71,30 @@ class productController extends Controller
 
     public function search(Request $request)
     {
-        $price=$request->price;
+        $pricefrom=$request->pricefrom;
+        $priceto=$request->priceto;
         $expiry_date=$request->expiry_date;
         // return $data=$request->all();
 
         $result=products::query();
-        if(!empty($price)){
-            $result=$result->where('price',$price);
+        if(!empty($pricefrom && $priceto )){
+
+            $result=$result->where('price','<=',$priceto);
+            $result=$result->where('price','>=',$pricefrom);
+
+
+            // ->whereBetween('price', [$pricefrom, $priceto]);
+
+            // ->where('price',$price);
         }
         if(!empty($expiry_date)){
             $result=$result->where('expiry_date',$expiry_date);
+
+            // ->where('expiry_date',$expiry_date);
         }
 
 
-         $result=$result->paginate(3);
+         $result=$result->paginate(10);
         return view('search',compact('result'));
 
     }

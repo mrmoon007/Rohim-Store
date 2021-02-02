@@ -12,20 +12,23 @@
   </head>
   <body>
     <div class="container">
-        <div>
+        <div class="mt-3">
             <nav class="navbar navbar-light bg-light">
                 <div class="container-fluid">
-                  <a class="navbar-brand" href="{{ route('product.index') }}">Rohim Store</a>
-                  <a href="{{ route('product.addProduct') }}" class="btn btn-primary">Add Product</a>
+                  <a class="navbar-brand fs-3 fw-bold text-uppercase fst-italic" href="{{ route('product.index') }}">Rohim Store</a>
+                  <a href="{{ route('product.addProduct') }}" class="btn btn-outline-info">Add Product</a>
                   <form class="d-flex" action="{{ route('product.search') }}" method="GET">
-                    <input class="form-control me-2" type="search" name="price" placeholder="Price" aria-label="Search">
+                    <input class="form-control me-2" type="search" name="pricefrom" placeholder="Price from" aria-label="Search">
+                    <input class="form-control me-2" type="search" name="priceto" placeholder="Price to" aria-label="Search">
                     <input class="form-control me-2" type="date" name="expiry_date" placeholder="Expiry date" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                   </form>
                 </div>
               </nav>
         </div>
-        @yield('content')
+        <div class="p-3">
+            @yield('content')
+        </div>
     </div>
 
     <!-- Optional JavaScript; choose one of the two! -->

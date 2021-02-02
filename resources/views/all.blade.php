@@ -13,7 +13,7 @@
     <tbody>
         @foreach ($data as $row)
             <tr>
-                <th scope="row">{{ $row->id }}</th>
+                <th >{{ $data->firstItem()+$loop->index }}</th>
                 <td>{{ $row->name }}</td>
                 <td>{{ $row->price }}</td>
                 <td>{{ $row->expiry_date }}</td>
@@ -23,7 +23,13 @@
                     <a href="{{ route('product.delete',$row->id) }}" class="btn btn-ms btn-danger">delete</a>
                 </td>
             </tr>
+
         @endforeach
+        <tr>
+            <td>
+                {{$data->links() }}
+            </td>
+        </tr>
     </tbody>
   </table>
 
