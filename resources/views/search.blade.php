@@ -25,8 +25,8 @@
                 </td>
             </tr>
         @endforeach
-        <tr>
-            <td class="text-center">
+        <tr class="text-center">
+            <td >
                 {{ $result->links() }}
             </td>
         </tr>

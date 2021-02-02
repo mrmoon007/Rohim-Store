@@ -94,7 +94,7 @@ class productController extends Controller
         }
 
 
-         $result=$result->paginate(10);
+         $result=$result->paginate(5);
         return view('search',compact('result'));
 
     }
