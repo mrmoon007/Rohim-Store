@@ -1,6 +1,7 @@
 @extends('master')
 @section('content')
 <table class="table table-hover">
+    {{-- this is form --}}
     <form action="{{ route('product.update',$edit->id) }}" method="POST">
         @csrf
         <tr>
